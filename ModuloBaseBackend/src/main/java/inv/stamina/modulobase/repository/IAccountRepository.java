@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package inv.stamina.modulobase.repository;
+
+import inv.stamina.modulobase.model.Account;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ *
+ * @author alepaco.maton
+ */
+@Repository
+public interface IAccountRepository extends JpaRepository<Account, Integer> {
+
+    Account findByUserNameAndStatusIn(String userName, List<Short> asList);
+
+    Account findByEmail(String email);
+
+    Account findByEmailAndVerifyCode(String email, String verifyCode); 
+    
+}
